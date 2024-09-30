@@ -51,59 +51,21 @@
   </div>
 </header>
 
-<script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const scrollToTop = document.getElementById('scroll-to-top');
+<section class="relative bg-purple-600 text-white py-10 md:py-20 overflow-hidden">
+  <!-- Video Background -->
+  <video autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover opacity-40 z-0">
+    <source src="/content/background.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-  // Funció per mostrar/ocultar la fletxa de tornar a dalt
-  const toggleScrollToTopButton = () => {
-    if (window.scrollY > 300) {
-      scrollToTop.classList.remove('hidden');
-    } else {
-      scrollToTop.classList.add('hidden');
-    }
-  };
+  <!-- Gradient overlay to enhance readability -->
+  <div class="absolute inset-0 bg-gradient-to-t from-purple-800 via-purple-600 to-transparent opacity-70 z-0"></div>
 
-  // Mostrar/ocultar el menú
-  menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    scrollToTop.classList.add('hidden'); // Desapareix la fletxa si el menú és visible
-
-    // Canviar l'icona del botó
-    const icon = menuToggle.querySelector('svg');
-    if (mobileMenu.classList.contains('hidden')) {
-      icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>'; // Icona de menú
-    } else {
-      icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>'; // Icona de X
-    }
-  });
-  // Afegir un event listener a cada enllaç del menú mòbil per tancar-lo quan es fa clic
-  const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
-
-  mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden'); // Tanca el menú
-      const icon = menuToggle.querySelector('svg'); // Canvia l'icona del botó
-      icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>'; // Icona de menú
-    });
-  });
-
-  // Event listener per fer aparèixer la fletxa en fer scroll
-  window.addEventListener('scroll', toggleScrollToTopButton);
-
-  // Funció per tornar a dalt
-  scrollToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
-
-<!-- Hero Section -->
-<section class="bg-purple-600 text-white py-10 md:py-20">
-  <div class="container mx-auto text-center px-4">
-    <h1 class="text-3xl md:text-5xl font-bold mb-4">Creació de Pàgines Web Professionals</h1>
-    <p class="text-base md:text-lg mb-6">Soc expert en desenvolupament de pàgines web modernes i adaptatives.</p>
-    <a href="#services" class="bg-white text-purple-600 py-2 md:py-3 px-4 md:px-8 rounded-full shadow-md font-semibold hover:bg-gray-200 transition">Descobreix els nostres serveis</a>
+  <!-- Content Section -->
+  <div class="relative z-10 text-center">
+    <h1 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">Creació de Pàgines Web Professionals</h1>
+    <p class="text-base md:text-lg mb-6 drop-shadow-md">Soc expert en desenvolupament de pàgines web modernes i adaptatives.</p>
+    <a href="#services" class="bg-white text-purple-600 py-2 md:py-3 px-4 md:px-8 rounded-full shadow-lg font-semibold hover:bg-gray-200 transition duration-300 ease-in-out transform hover:scale-105">Descobreix els nostres serveis</a>
   </div>
 </section>
 
@@ -114,7 +76,6 @@
     <h2 class="text-3xl font-semibold text-black mb-4">Sobre Mi</h2>
     <p class="text-white mb-6">Soc Harvey, un creador de pagines web situat a Tortosa que ofereixo la creacio especifica de pagines web ajustades a la empresa. Ajudo a l'empresa millorar incloent la creació de pàgines web i altres competències digitals.</p>
   </section>
-
 
   <hr class="border-gray-300 my-10">
 
@@ -293,15 +254,6 @@
   </div>
 </section>
 
-<script>
-  function toggleFAQ(id) {
-    const answer = document.getElementById(id);
-    const icon = document.getElementById(id + '-icon');
-    answer.classList.toggle('hidden');
-    icon.textContent = answer.classList.contains('hidden') ? '+' : '-';
-  }
-</script>
-
 <!-- Footer -->
 <footer class="bg-gray-900 text-white py-12">
   <section id="contact" data-aos="fade-up">
@@ -344,5 +296,6 @@
 <script>
   AOS.init();
 </script>
+<script src="main.js"></script>
 </body>
 </html>
