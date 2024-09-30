@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/landing-page-prova/",
-    "preview": "vite preview --base=/landing-page-prova/"
+    "build": "vite build --base=/landing-page-harvey/",
+    "preview": "vite preview --base=/landing-page-harvey/"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
