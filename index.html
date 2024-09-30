@@ -3,22 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IES Ebre - Creació de Pàgines Web</title>
+  <title>Harvey Designs - Creació de Pàgines Web</title>
   <link href="style.css" rel="stylesheet">
   <!-- AOS Library for Scroll Animations -->
   <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
-<!-- Navbar -->
+<!-- Fletxa per tornar dalt -->
+<div id="scroll-to-top" class="fixed top-4 right-4 hidden bg-purple-600 text-white rounded-full p-2 cursor-pointer z-50">
+  <span class="text-xl">^</span>
+</div>
+
 <header class="bg-white shadow-md">
   <div class="container mx-auto px-6 py-4 flex justify-between items-center">
     <a href="#" class="flex items-center space-x-2">
-      <img src="https://pbs.twimg.com/profile_images/799572175879630848/RLLmHvEi_400x400.jpg" alt="Logo IES Ebre" class="h-12 w-12 rounded-full">
-      <span class="text-3xl font-bold text-purple-600">IES Ebre</span>
+      <img src="https://harveydesigns.com/wp-content/uploads/2017/01/HD_logo.jpeg" alt="Logo HD" class="h-12 w-12 rounded-full">
+      <span class="text-3xl font-bold text-purple-600">Harvey Designs</span>
     </a>
-    <nav>
+    <!-- Botó del menú hamburguer -->
+    <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+    <nav id="navbar" class="hidden md:flex">
       <ul class="flex space-x-4 text-gray-600">
-        <li><a href="#about" class="hover:text-purple-600">Sobre Nosaltres</a></li>
+        <li><a href="#about" class="hover:text-purple-600">Sobre Mi</a></li>
         <li><a href="#services" class="hover:text-purple-600">Serveis</a></li>
         <li><a href="#pricing" class="hover:text-purple-600">Preus</a></li>
         <li><a href="#portfolio" class="hover:text-purple-600">Dissenys Previs</a></li>
@@ -27,42 +37,102 @@
       </ul>
     </nav>
   </div>
+
+  <!-- Menú desplegable per mòbil -->
+  <div id="mobile-menu" class="hidden bg-white shadow-md absolute right-0 mt-2 w-48 rounded-lg z-20">
+    <ul class="flex flex-col space-y-2 p-4">
+      <li><a href="#about" class="block hover:text-purple-600">Sobre Mi</a></li>
+      <li><a href="#services" class="block hover:text-purple-600">Serveis</a></li>
+      <li><a href="#pricing" class="block hover:text-purple-600">Preus</a></li>
+      <li><a href="#portfolio" class="block hover:text-purple-600">Dissenys Previs</a></li>
+      <li><a href="#faq" class="block hover:text-purple-600">Preguntes Freqüents</a></li>
+      <li><a href="#contact" class="block hover:text-purple-600">Contacte</a></li>
+    </ul>
+  </div>
 </header>
 
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const scrollToTop = document.getElementById('scroll-to-top');
+
+  // Funció per mostrar/ocultar la fletxa de tornar a dalt
+  const toggleScrollToTopButton = () => {
+    if (window.scrollY > 300) {
+      scrollToTop.classList.remove('hidden');
+    } else {
+      scrollToTop.classList.add('hidden');
+    }
+  };
+
+  // Mostrar/ocultar el menú
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    scrollToTop.classList.add('hidden'); // Desapareix la fletxa si el menú és visible
+
+    // Canviar l'icona del botó
+    const icon = menuToggle.querySelector('svg');
+    if (mobileMenu.classList.contains('hidden')) {
+      icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>'; // Icona de menú
+    } else {
+      icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>'; // Icona de X
+    }
+  });
+  // Afegir un event listener a cada enllaç del menú mòbil per tancar-lo quan es fa clic
+  const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden'); // Tanca el menú
+      const icon = menuToggle.querySelector('svg'); // Canvia l'icona del botó
+      icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>'; // Icona de menú
+    });
+  });
+
+  // Event listener per fer aparèixer la fletxa en fer scroll
+  window.addEventListener('scroll', toggleScrollToTopButton);
+
+  // Funció per tornar a dalt
+  scrollToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
 <!-- Hero Section -->
-<section class="bg-purple-600 text-white py-20">
-  <div class="container mx-auto text-center">
-    <h1 class="text-5xl font-bold mb-4">Creació de Pàgines Web Professionals</h1>
-    <p class="text-lg mb-6">Som experts en desenvolupament de pàgines web modernes i adaptatives.</p>
-    <a href="#services" class="bg-white text-purple-600 py-3 px-8 rounded-full shadow-md font-semibold hover:bg-gray-200 transition">Descobreix els nostres serveis</a>
+<section class="bg-purple-600 text-white py-10 md:py-20">
+  <div class="container mx-auto text-center px-4">
+    <h1 class="text-3xl md:text-5xl font-bold mb-4">Creació de Pàgines Web Professionals</h1>
+    <p class="text-base md:text-lg mb-6">Soc expert en desenvolupament de pàgines web modernes i adaptatives.</p>
+    <a href="#services" class="bg-white text-purple-600 py-2 md:py-3 px-4 md:px-8 rounded-full shadow-md font-semibold hover:bg-gray-200 transition">Descobreix els nostres serveis</a>
   </div>
 </section>
 
 <!-- Main content -->
 <main class="container mx-auto p-6">
-  <!-- About Us Section -->
-  <section id="about" class="bg-white shadow-md rounded-lg p-8 my-10" data-aos="fade-up">
-    <h2 class="text-3xl font-semibold text-gray-800 mb-4">Sobre Nosaltres</h2>
-    <p class="text-gray-600 mb-6">Som l'IES Ebre, un institut situat a Tortosa que ofereix formació professional de grau mitjà i superior. Ajudem a formar els futurs professionals en diverses àrees, incloent la creació de pàgines web i altres competències digitals.</p>
+  <!-- About Me Section -->
+  <section id="about" class="bg-purple-500 shadow-md rounded-lg p-8 my-10" data-aos="fade-up">
+    <h2 class="text-3xl font-semibold text-black mb-4">Sobre Mi</h2>
+    <p class="text-white mb-6">Soc Harvey, un creador de pagines web situat a Tortosa que ofereixo la creacio especifica de pagines web ajustades a la empresa. Ajudo a l'empresa millorar incloent la creació de pàgines web i altres competències digitals.</p>
   </section>
+
 
   <hr class="border-gray-300 my-10">
 
   <!-- Services Section -->
   <section id="services" class="my-10">
-    <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center" data-aos="fade-left">Els nostres serveis</h2>
+    <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center" data-aos="fade-left">Els meus serveis</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="fade-right">
         <h3 class="text-xl font-semibold text-purple-600 mb-4">Creació de Pàgines Web</h3>
-        <p class="text-gray-600">Utilitzem tecnologies modernes com HTML, CSS, JavaScript i frameworks com TailwindCSS per crear llocs web responsius i eficients.</p>
+        <p class="text-gray-600">Utilitzo tecnologies modernes com HTML, CSS, JavaScript i frameworks com TailwindCSS per crear llocs web responsius i eficients.</p>
       </div>
       <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="fade-right">
         <h3 class="text-xl font-semibold text-purple-600 mb-4">Disseny Responsiu</h3>
-        <p class="text-gray-600">Els nostres dissenys s'adapten a qualsevol dispositiu, ja sigui ordinador, mòbil o tauleta.</p>
+        <p class="text-gray-600">Els meus dissenys s'adapten a qualsevol dispositiu, ja sigui ordinador, mòbil o tauleta.</p>
       </div>
       <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="fade-right">
         <h3 class="text-xl font-semibold text-purple-600 mb-4">Optimització SEO</h3>
-        <p class="text-gray-600">Implementem bones pràctiques per millorar la visibilitat dels llocs web en els motors de cerca com Google.</p>
+        <p class="text-gray-600">Implemento bones pràctiques per millorar la visibilitat dels llocs web en els motors de cerca com Google.</p>
       </div>
     </div>
   </section>
@@ -71,7 +141,7 @@
 
   <!-- Pricing Section -->
   <section id="pricing" class="bg-gray-100 py-12" data-aos="fade-up">
-    <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Preus dels nostres Serveis</h2>
+    <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Preus dels meus Serveis</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="zoom-in">
         <h3 class="text-xl font-semibold text-purple-600 mb-4 text-center">Pla Bàsic</h3>
@@ -187,7 +257,7 @@
         <span id="faq1-icon" class="text-gray-600">+</span>
       </div>
       <div id="faq1" class="hidden p-4">
-        <p class="text-gray-600">Oferim diversos tipus de pàgines web, incloent pàgines corporatives, botigues en línia, portals informatius, i aplicacions web personalitzades.</p>
+        <p class="text-gray-600">Ofereixo diversos tipus de pàgines web, incloent pàgines corporatives, botigues en línia, portals informatius, i aplicacions web personalitzades.</p>
       </div>
     </div>
 
@@ -197,7 +267,7 @@
         <span id="faq2-icon" class="text-gray-600">+</span>
       </div>
       <div id="faq2" class="hidden p-4">
-        <p class="text-gray-600">Els nostres preus varien segons el tipus de projecte. Els plans comencen a partir de €500 per a pàgines bàsiques fins a €2000 per a projectes més complexos.</p>
+        <p class="text-gray-600">Els meus preus varien segons el tipus de projecte. Els plans comencen a partir de €500 per a pàgines bàsiques fins a €2000 per a projectes més complexos.</p>
       </div>
     </div>
 
@@ -217,7 +287,7 @@
         <span id="faq4-icon" class="text-gray-600">+</span>
       </div>
       <div id="faq4" class="hidden p-4">
-        <p class="text-gray-600">Sí, oferim suport continu per assegurar que el teu lloc web funcioni correctament i per ajudar-te amb qualsevol canvi o actualització que necessitis.</p>
+        <p class="text-gray-600">Sí, ofereixo suport continu per assegurar que el teu lloc web funcioni correctament i per ajudar-te amb qualsevol canvi o actualització que necessitis.</p>
       </div>
     </div>
   </div>
@@ -236,39 +306,40 @@
 <!-- Footer -->
 <footer class="bg-gray-900 text-white py-12">
   <section id="contact" data-aos="fade-up">
-  <div class="container mx-auto px-6">
-    <div class="flex justify-between">
-      <div>
-        <h3 class="text-xl font-bold mb-4">IES Ebre</h3>
-        <p class="text-gray-400 mb-4">Av. de Cristòfol Colom, 34, 42, 43500 Tortosa, Tarragona</p>
-        <p class="text-gray-400">Correu: <a href="mailto:hglover@gmail.com" class="underline">hglover@gmail.com</a></p>
-        <p class="text-gray-400">Telèfon: <a href="tel:+34625452365" class="underline">625 452 365</a></p>
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between">
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-xl font-bold mb-4">IES Ebre</h3>
+          <p class="text-gray-400 mb-4">Av. de Cristòfol Colom, 34, 42, 43500 Tortosa, Tarragona</p>
+          <p class="text-gray-400">Correu: <a href="mailto:hglover@gmail.com" class="underline">hglover@gmail.com</a></p>
+          <p class="text-gray-400">Telèfon: <a href="tel:+34625452365" class="underline">625 452 365</a></p>
+        </div>
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-xl font-bold mb-4">Enllaços Ràpids</h3>
+          <ul class="space-y-2">
+            <li><a href="#about" class="text-gray-400 hover:underline">Sobre Mi</a></li>
+            <li><a href="#services" class="text-gray-400 hover:underline">Serveis</a></li>
+            <li><a href="#pricing" class="text-gray-400 hover:underline">Preus</a></li>
+            <li><a href="#portfolio" class="text-gray-400 hover:underline">Dissenys Previs</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:underline">Contacte</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+          <p class="text-gray-400 mb-4">Subscriu-te al nostre butlletí per rebre les últimes novetats.</p>
+          <form action="#" class="flex flex-col md:flex-row">
+            <input type="email" placeholder="Correu electrònic" class="w-full md:w-auto px-4 py-2 rounded-l-lg text-gray-800 focus:outline-none mb-2 md:mb-0">
+            <button class="bg-purple-600 px-6 py-2 rounded-lg text-white font-semibold hover:bg-purple-500">Subscriu-te</button>
+          </form>
+        </div>
       </div>
-      <div>
-        <h3 class="text-xl font-bold mb-4">Enllaços Ràpids</h3>
-        <ul class="space-y-2">
-          <li><a href="#about" class="text-gray-400 hover:underline">Sobre Nosaltres</a></li>
-          <li><a href="#services" class="text-gray-400 hover:underline">Serveis</a></li>
-          <li><a href="#pricing" class="text-gray-400 hover:underline">Preus</a></li>
-          <li><a href="#portfolio" class="text-gray-400 hover:underline">Dissenys Previs</a></li>
-          <li><a href="#contact" class="text-gray-400 hover:underline">Contacte</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-xl font-bold mb-4">Newsletter</h3>
-        <p class="text-gray-400 mb-4">Subscriu-te al nostre butlletí per rebre les últimes novetats.</p>
-        <form action="#" class="flex">
-          <input type="email" placeholder="Correu electrònic" class="w-full px-4 py-2 rounded-l-lg text-gray-800 focus:outline-none">
-          <button class="bg-purple-600 px-6 py-2 rounded-r-lg text-white font-semibold hover:bg-purple-500">Subscriu-te</button>
-        </form>
+      <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500">
+        &copy; 2024 IES Ebre. Tots els drets reservats.
       </div>
     </div>
-    <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500">
-      &copy; 2024 IES Ebre. Tots els drets reservats.
-    </div>
-  </div>
-</section>
+  </section>
 </footer>
+
 
 
 <!-- AOS Animation Script -->
