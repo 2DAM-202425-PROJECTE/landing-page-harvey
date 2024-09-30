@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build --base=/landing-page-prova/",
+    "preview": "vite preview --base=/landing-page-prova/"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
@@ -14,4 +14,5 @@
     "tailwindcss": "^3.4.13",
     "vite": "^5.4.1"
   }
+  
 }
