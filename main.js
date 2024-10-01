@@ -50,3 +50,28 @@ function toggleFAQ(id) {
     answer.classList.toggle('hidden');
     icon.textContent = answer.classList.contains('hidden') ? '+' : '-';
 }
+
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the form from submitting the default way
+
+    // Collect form data
+    let formData = new FormData(this);
+
+    // Send the form data using fetch to send_email.php
+    fetch('send_email.php', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.text()) // Expect a plain text response
+        .then(data => {
+            // Show a success message or handle error
+            document.getElementById("responseMessage").textContent = "Missatge enviat amb èxit!";
+
+            // Clear the form fields
+            document.getElementById("contactForm").reset();
+        })
+        .catch(error => {
+            console.error("Error en enviar el missatge:", error);
+            document.getElementById("responseMessage").textContent = "Error en enviar el missatge. Si us plau, prova-ho de nou.";
+        });
+});

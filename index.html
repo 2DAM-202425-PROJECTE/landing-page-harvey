@@ -33,7 +33,7 @@
         <li><a href="#pricing" class="hover:text-purple-600">Preus</a></li>
         <li><a href="#portfolio" class="hover:text-purple-600">Dissenys Previs</a></li>
         <li><a href="#faq" class="hover:text-purple-600">Preguntes Freqüents</a></li>
-        <li><a href="#contact" class="hover:text-purple-600">Contacte</a></li>
+        <li><a href="#contact" class="hover:text-purple-600">Contacte Addicional</a></li>
       </ul>
     </nav>
   </div>
@@ -46,21 +46,19 @@
       <li><a href="#pricing" class="block hover:text-purple-600">Preus</a></li>
       <li><a href="#portfolio" class="block hover:text-purple-600">Dissenys Previs</a></li>
       <li><a href="#faq" class="block hover:text-purple-600">Preguntes Freqüents</a></li>
-      <li><a href="#contact" class="block hover:text-purple-600">Contacte</a></li>
+      <li><a href="#contact" class="block hover:text-purple-600">Contacte Addicional</a></li>
     </ul>
   </div>
 </header>
 
-<section class="relative bg-purple-600 text-white py-10 md:py-20 overflow-hidden">
+<section class="relative bg-purple-600 text-white py-10 md:py-20 overflow-hidden px-4 md:px-0">
   <!-- Video Background -->
   <video autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover opacity-40 z-0">
     <source src="/content/background.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-
   <!-- Gradient overlay to enhance readability -->
   <div class="absolute inset-0 bg-gradient-to-t from-purple-800 via-purple-600 to-transparent opacity-70 z-0"></div>
-
   <!-- Content Section -->
   <div class="relative z-10 text-center">
     <h1 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">Creació de Pàgines Web Professionals</h1>
@@ -72,9 +70,77 @@
 <!-- Main content -->
 <main class="container mx-auto p-6">
   <!-- About Me Section -->
-  <section id="about" class="bg-purple-500 shadow-md rounded-lg p-8 my-10" data-aos="fade-up">
-    <h2 class="text-3xl font-semibold text-black mb-4">Sobre Mi</h2>
-    <p class="text-white mb-6">Soc Harvey, un creador de pagines web situat a Tortosa que ofereixo la creacio especifica de pagines web ajustades a la empresa. Ajudo a l'empresa millorar incloent la creació de pàgines web i altres competències digitals.</p>
+  <section id="about" class="bg-purple-500 shadow-md rounded-lg p-8 my-10 flex flex-col md:flex-row items-start" data-aos="fade-up">
+    <div class="flex-1">
+      <h2 class="text-3xl font-semibold text-white mb-4">Sobre Mi</h2>
+      <p class="text-white mb-6">Soc Harvey, un creador de pàgines web situat a Tortosa que ofereixo la creació específica de pàgines web ajustades a l'empresa. Ajudo a l'empresa a millorar incloent la creació de pàgines web i altres competències digitals.</p>
+
+      <div class="flex items-start flex-col md:flex-row">
+        <!-- Imatge de perfil -->
+        <div class="relative mb-4 md:mr-4 flex justify-center">
+          <img src="https://t4.ftcdn.net/jpg/06/21/02/63/360_F_621026341_URHzkFy5TykYaE2T39fBkNHWsykigs7q.jpg"
+               alt="Foto de perfil"
+               class="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-white shadow-lg object-cover mb-4">
+        </div>
+
+        <!-- Contact Section Next to Image -->
+        <div class="flex-1">
+          <h2 class="text-2xl font-semibold text-white mb-4">Contacta'm</h2>
+          <p class="text-white mb-4">Si tens qualsevol pregunta o necessites més informació, no dubtis a contactar-me.</p>
+          <form id="contactForm" class="space-y-4">
+            <input type="text" name="name" placeholder="Nom" class="w-full p-3 rounded-lg focus:outline-none focus:ring focus:ring-purple-300" required>
+            <input type="email" name="email" placeholder="Correu Electrònic" class="w-full p-3 rounded-lg focus:outline-none focus:ring focus:ring-purple-300" required>
+            <textarea name="message" placeholder="Missatge" class="w-full p-3 rounded-lg focus:outline-none focus:ring focus:ring-purple-300" required></textarea>
+            <button type="submit" class="bg-white text-purple-600 py-2 px-4 rounded-full shadow-lg font-semibold hover:bg-gray-200 transition duration-300 ease-in-out transform hover:scale-105">Enviar</button>
+          </form>
+          <p id="responseMessage" class="text-white mt-4">Gràcies per contactar-me!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rating and Testimonials Section -->
+    <div class="ml-6 w-1/3 hidden md:block">
+      <h3 class="text-xl font-semibold text-white mb-4">Valoració</h3>
+      <div class="flex items-center mb-2">
+        <span class="text-yellow-400 text-2xl">★★★★★</span>
+        <span class="text-white ml-2">(4.8/5)</span>
+      </div>
+      <h4 class="text-lg font-semibold text-white mt-4">Testimonis</h4>
+      <div class="bg-white p-4 rounded-lg shadow-lg mt-2">
+        <p class="text-gray-600">"Fantàstic treball, molt professional!"</p>
+        <p class="mt-1 font-semibold">- Steven Romero</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-lg mt-2">
+        <p class="text-gray-600">"El millor dissenyador web que he trobat!"</p>
+        <p class="mt-1 font-semibold">- Mihai Sebastian</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-lg mt-2">
+        <p class="text-gray-600">"Molt recomanable, va superar les meves expectatives!"</p>
+        <p class="mt-1 font-semibold">- Octavian Mihalcea</p>
+      </div>
+    </div>
+
+    <!-- Rating and Testimonials for Mobile -->
+    <div class="block md:hidden mt-4">
+      <h3 class="text-xl font-semibold text-white mb-4">Valoració</h3>
+      <div class="flex items-center mb-2">
+        <span class="text-yellow-400 text-2xl">★★★★★</span>
+        <span class="text-white ml-2">(4.8/5)</span>
+      </div>
+      <h4 class="text-lg font-semibold text-white mt-4">Testimonis</h4>
+      <div class="bg-white p-4 rounded-lg shadow-lg mt-2">
+        <p class="text-gray-600">"Fantàstic treball, molt professional!"</p>
+        <p class="mt-1 font-semibold">- Steven Romero</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-lg mt-2">
+        <p class="text-gray-600">"El millor dissenyador web que he trobat!"</p>
+        <p class="mt-1 font-semibold">- Mihai Sebastian</p>
+      </div>
+      <div class="bg-white p-4 rounded-lg shadow-lg mt-2">
+        <p class="text-gray-600">"Molt recomanable, va superar les meves expectatives!"</p>
+        <p class="mt-1 font-semibold">- Octavian Mihalcea</p>
+      </div>
+    </div>
   </section>
 
   <hr class="border-gray-300 my-10">
@@ -83,15 +149,18 @@
   <section id="services" class="my-10">
     <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center" data-aos="fade-left">Els meus serveis</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="fade-right">
+      <div class="bg-purple-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="fade-right"
+           style="box-shadow: 0 0 15px 5px rgba(186, 104, 200, 0.5); transition: box-shadow 0.3s ease;">
         <h3 class="text-xl font-semibold text-purple-600 mb-4">Creació de Pàgines Web</h3>
         <p class="text-gray-600">Utilitzo tecnologies modernes com HTML, CSS, JavaScript i frameworks com TailwindCSS per crear llocs web responsius i eficients.</p>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="fade-right">
+      <div class="bg-purple-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="fade-right"
+           style="box-shadow: 0 0 15px 5px rgba(186, 104, 200, 0.5); transition: box-shadow 0.3s ease;">
         <h3 class="text-xl font-semibold text-purple-600 mb-4">Disseny Responsiu</h3>
         <p class="text-gray-600">Els meus dissenys s'adapten a qualsevol dispositiu, ja sigui ordinador, mòbil o tauleta.</p>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="fade-right">
+      <div class="bg-purple-100 p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="fade-right"
+           style="box-shadow: 0 0 15px 5px rgba(186, 104, 200, 0.5); transition: box-shadow 0.3s ease;">
         <h3 class="text-xl font-semibold text-purple-600 mb-4">Optimització SEO</h3>
         <p class="text-gray-600">Implemento bones pràctiques per millorar la visibilitat dels llocs web en els motors de cerca com Google.</p>
       </div>
@@ -104,40 +173,40 @@
   <section id="pricing" class="bg-gray-100 py-12" data-aos="fade-up">
     <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Preus dels meus Serveis</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="zoom-in">
+      <div class="bg-gray-300 p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="zoom-in">
         <h3 class="text-xl font-semibold text-purple-600 mb-4 text-center">Pla Bàsic</h3>
         <p class="text-gray-600 text-center mb-4">Ideal per petites empreses i projectes personals.</p>
-        <p class="text-4xl font-bold text-purple-600 text-center mb-6">€500</p>
+        <p class="text-4xl font-bold text-purple-600 text-center mb-6">500€ - 750€</p>
         <ul class="text-gray-600 mb-6 space-y-2">
           <li>- Pàgina única</li>
           <li>- Disseny responsiu</li>
           <li>- Optimització bàsica</li>
         </ul>
-        <a href="#" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
+        <a href="#contact" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
       </div>
 
-      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="zoom-in">
+      <div class="bg-gray-300 p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="zoom-in">
         <h3 class="text-xl font-semibold text-purple-600 mb-4 text-center">Pla Pro</h3>
         <p class="text-gray-600 text-center mb-4">Per a negocis que necessiten més funcionalitats.</p>
-        <p class="text-4xl font-bold text-purple-600 text-center mb-6">€1000</p>
+        <p class="text-4xl font-bold text-purple-600 text-center mb-6">750€ - 1500€</p>
         <ul class="text-gray-600 mb-6 space-y-2">
           <li>- Fins a 5 pàgines</li>
           <li>- Disseny completament responsiu</li>
           <li>- SEO avançat</li>
         </ul>
-        <a href="#" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
+        <a href="#contact" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
       </div>
 
-      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="zoom-in">
+      <div class="bg-gray-300 p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="zoom-in">
         <h3 class="text-xl font-semibold text-purple-600 mb-4 text-center">Pla Premium</h3>
         <p class="text-gray-600 text-center mb-4">Tot el que necessites per projectes avançats.</p>
-        <p class="text-4xl font-bold text-purple-600 text-center mb-6">€2000</p>
+        <p class="text-4xl font-bold text-purple-600 text-center mb-6">1500€ - 2000€</p>
         <ul class="text-gray-600 mb-6 space-y-2">
           <li>- Pàgines il·limitades</li>
           <li>- Funcionalitats personalitzades</li>
           <li>- SEO professional</li>
         </ul>
-        <a href="#" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
+        <a href="#contact" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
       </div>
     </div>
   </section>
@@ -149,7 +218,7 @@
     <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Dissenys Previs</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Project 1 -->
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
+      <div class="bg-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
         <img src="https://us-wd.gr-cdn.com/blog/sites/5/2023/07/2012/ejemplo_pagina_web_eventos-1-1536x720-1.webp" alt="Disseny 1" class="w-full h-40 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold text-purple-600 mb-2">Projecte 1</h3>
@@ -158,7 +227,7 @@
         </div>
       </div>
       <!-- Project 2 -->
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
+      <div class="bg-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
         <img src="https://colibriwp.com/blog/wp-content/uploads/2018/10/petplace-min.png" alt="Disseny 2" class="w-full h-40 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold text-purple-600 mb-2">Projecte 2</h3>
@@ -167,7 +236,7 @@
         </div>
       </div>
       <!-- Project 3 -->
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
+      <div class="bg-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
         <img src="https://aprendamosmarketing.com/wp-content/uploads/2022/07/Canvas-lab-min-1024x559.png" alt="Disseny 3" class="w-full h-40 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold text-purple-600 mb-2">Projecte 3</h3>
@@ -176,7 +245,7 @@
         </div>
       </div>
       <!-- Project 4 -->
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
+      <div class="bg-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
         <img src="https://aprendamosmarketing.com/wp-content/uploads/2022/07/Hubspot-academy-min-1024x563.png" alt="Disseny 4" class="w-full h-40 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold text-purple-600 mb-2">Projecte 4</h3>
@@ -185,7 +254,7 @@
         </div>
       </div>
       <!-- Project 5 -->
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
+      <div class="bg-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
         <img src="https://institutoemprende.com/wp-content/uploads/2021/06/ejemplo-pagina-web-portfolio.jpg" alt="Disseny 5" class="w-full h-40 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold text-purple-600 mb-2">Projecte 5</h3>
@@ -194,7 +263,7 @@
         </div>
       </div>
       <!-- Project 6 -->
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
+      <div class="bg-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
         <img src="https://scottmax.com/wp-content/uploads/2023/05/image-248-1024x531.png" alt="Disseny 6" class="w-full h-40 object-cover">
         <div class="p-4">
           <h3 class="text-xl font-semibold text-purple-600 mb-2">Projecte 6</h3>
@@ -214,7 +283,7 @@
   <div class="max-w-4xl mx-auto">
     <div class="border-b border-gray-300">
       <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition" onclick="toggleFAQ('faq1')">
-        <h3 class="text-xl font-semibold text-purple-600">Quins tipus de pàgines web oferiu?</h3>
+        <h3 class="text-xl font-semibold text-purple-600">Quins tipus de pàgines web ofereixo?</h3>
         <span id="faq1-icon" class="text-gray-600">+</span>
       </div>
       <div id="faq1" class="hidden p-4">
@@ -224,7 +293,7 @@
 
     <div class="border-b border-gray-300">
       <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition" onclick="toggleFAQ('faq2')">
-        <h3 class="text-xl font-semibold text-purple-600">Quins són els preus dels vostres serveis?</h3>
+        <h3 class="text-xl font-semibold text-purple-600">Quins són els preus dels meus serveis?</h3>
         <span id="faq2-icon" class="text-gray-600">+</span>
       </div>
       <div id="faq2" class="hidden p-4">
@@ -234,11 +303,11 @@
 
     <div class="border-b border-gray-300">
       <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition" onclick="toggleFAQ('faq3')">
-        <h3 class="text-xl font-semibold text-purple-600">Quina és la disponibilitat de l'equip?</h3>
+        <h3 class="text-xl font-semibold text-purple-600">Quina és la meva disponibilitat?</h3>
         <span id="faq3-icon" class="text-gray-600">+</span>
       </div>
       <div id="faq3" class="hidden p-4">
-        <p class="text-gray-600">Estem disponibles durant tota la setmana per atendre les teves consultes i gestionar projectes. Els horaris poden variar segons el tipus de servei que necessitis.</p>
+        <p class="text-gray-600">Estic disponibles durant tota la setmana per atendre les teves consultes i gestionar projectes. Els horaris poden variar segons el tipus de servei que necessitis.</p>
       </div>
     </div>
 
@@ -272,7 +341,8 @@
             <li><a href="#services" class="text-gray-400 hover:underline">Serveis</a></li>
             <li><a href="#pricing" class="text-gray-400 hover:underline">Preus</a></li>
             <li><a href="#portfolio" class="text-gray-400 hover:underline">Dissenys Previs</a></li>
-            <li><a href="#contact" class="text-gray-400 hover:underline">Contacte</a></li>
+            <li><a href="#faq" class="text-gray-400 hover:underline">Preguntes Freqüents</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:underline">Contacte Addicional</a></li>
           </ul>
         </div>
         <div>
