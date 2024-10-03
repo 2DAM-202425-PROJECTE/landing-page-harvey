@@ -7,6 +7,9 @@
   <link href="style.css" rel="stylesheet">
   <!-- AOS Library for Scroll Animations -->
   <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+  <script src="main.js"></script>
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
 <!-- Fletxa per tornar dalt -->
@@ -67,6 +70,26 @@
   </div>
 </section>
 
+<!-- Fons borros -->
+<div id="cookieBackdrop" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"></div>
+<!-- Alert de cookies -->
+<div id="cookieAlert" class="hidden fixed inset-0 flex items-center justify-center z-50">
+  <div class="bg-white shadow-lg rounded-lg p-8" style="box-shadow: 0 0 50px rgba(186, 104, 200, 1);">
+    <div class="flex flex-col items-center">
+      <p class="text-gray-700 text-xl mb-6 text-center">
+        Aquest lloc utilitza cookies per millorar la teva experiència. Acceptes l'ús de cookies?
+      </p>
+      <div class="flex space-x-4 mb-6">
+        <button id="acceptCookies" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600 transition duration-200">Acceptar</button>
+        <button id="rejectCookies" class="bg-red-500 text-white px-6 py-3 rounded hover:bg-red-600 transition duration-200">Rebutjar</button>
+      </div>
+      <p class="text-sm text-gray-600 text-center">
+        Per més informació, consulta els nostres <a id="cookiePolicyLink" href="#" class="text-blue-500 hover:underline" target="_blank">termes de condicions de les cookies</a>.
+      </p>
+    </div>
+  </div>
+</div>
+
 <!-- Main content -->
 <main class="container mx-auto p-6">
   <!-- About Me Section -->
@@ -87,13 +110,14 @@
         <div class="flex-1">
           <h2 class="text-2xl font-semibold text-white mb-4">Contacta'm</h2>
           <p class="text-white mb-4">Si tens qualsevol pregunta o necessites més informació, no dubtis a contactar-me.</p>
-          <form id="contactForm" class="space-y-4">
-            <input type="text" name="name" placeholder="Nom" class="w-full p-3 rounded-lg focus:outline-none focus:ring focus:ring-purple-300" required>
-            <input type="email" name="email" placeholder="Correu Electrònic" class="w-full p-3 rounded-lg focus:outline-none focus:ring focus:ring-purple-300" required>
+          <form id="contactForm" class="space-y-4" onsubmit="sendEmail(event);">
+            <input type="text" id="name" name="user_name" placeholder="Nom" class="w-full p-3 rounded-lg focus:outline-none focus:ring focus:ring-purple-300" required>
+            <input type="email" id="email" name="user_email" placeholder="Correu Electrònic" class="w-full p-3 rounded-lg focus:outline-none focus:ring focus:ring-purple-300" required>
             <textarea name="message" placeholder="Missatge" class="w-full p-3 rounded-lg focus:outline-none focus:ring focus:ring-purple-300" required></textarea>
             <button type="submit" class="bg-white text-purple-600 py-2 px-4 rounded-full shadow-lg font-semibold hover:bg-gray-200 transition duration-300 ease-in-out transform hover:scale-105">Enviar</button>
           </form>
-          <p id="responseMessage" class="text-white mt-4">Gràcies per contactar-me!</p>
+          <p id="responseMessage" class="text-white mt-4 hidden">Gràcies per contactar-me!</p>
+          <p id="errorMessage" class="text-red-500 mt-4 hidden">Hi ha hagut un problema amb l'enviament del correu. Si us plau, prova de nou.</p>
         </div>
       </div>
     </div>
@@ -182,7 +206,7 @@
           <li>- Disseny responsiu</li>
           <li>- Optimització bàsica</li>
         </ul>
-        <a href="#contact" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
+        <a href="#about" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
       </div>
 
       <div class="bg-gray-300 p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="zoom-in">
@@ -194,7 +218,7 @@
           <li>- Disseny completament responsiu</li>
           <li>- SEO avançat</li>
         </ul>
-        <a href="#contact" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
+        <a href="#about" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
       </div>
 
       <div class="bg-gray-300 p-6 rounded-lg shadow-lg hover:shadow-xl transition" data-aos="zoom-in">
@@ -206,7 +230,7 @@
           <li>- Funcionalitats personalitzades</li>
           <li>- SEO professional</li>
         </ul>
-        <a href="#contact" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
+        <a href="#about" class="block bg-purple-600 text-white text-center py-3 rounded-lg hover:bg-purple-700 transition">Contractar</a>
       </div>
     </div>
   </section>
@@ -282,42 +306,48 @@
   <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center">Preguntes Freqüents</h2>
   <div class="max-w-4xl mx-auto">
     <div class="border-b border-gray-300">
-      <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition" onclick="toggleFAQ('faq1')">
-        <h3 class="text-xl font-semibold text-purple-600">Quins tipus de pàgines web ofereixo?</h3>
-        <span id="faq1-icon" class="text-gray-600">+</span>
+      <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition ease-in-out duration-300" data-toggle>
+        <h3 class="text-xl font-semibold text-purple-600">Quins tipus de pàgines web ofereixes?</h3>
+        <span class="toggle-icon text-gray-600">+</span>
       </div>
-      <div id="faq1" class="hidden p-4">
-        <p class="text-gray-600">Ofereixo diversos tipus de pàgines web, incloent pàgines corporatives, botigues en línia, portals informatius, i aplicacions web personalitzades.</p>
-      </div>
-    </div>
-
-    <div class="border-b border-gray-300">
-      <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition" onclick="toggleFAQ('faq2')">
-        <h3 class="text-xl font-semibold text-purple-600">Quins són els preus dels meus serveis?</h3>
-        <span id="faq2-icon" class="text-gray-600">+</span>
-      </div>
-      <div id="faq2" class="hidden p-4">
-        <p class="text-gray-600">Els meus preus varien segons el tipus de projecte. Els plans comencen a partir de €500 per a pàgines bàsiques fins a €2000 per a projectes més complexos.</p>
+      <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out" data-toggle-content>
+        <p class="text-gray-600 p-4">Ofereixo una àmplia gamma de solucions web que s'adapten a les necessitats de cada client. Això inclou pàgines corporatives professionals, botigues en línia amb sistemes de pagament integrats, portals informatius amb contingut dinàmic i aplicacions web personalitzades per a una funcionalitat específica. Cada projecte és dissenyat tenint en compte els objectius del client i l'experiència de l'usuari.</p>
       </div>
     </div>
 
     <div class="border-b border-gray-300">
-      <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition" onclick="toggleFAQ('faq3')">
+      <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition ease-in-out duration-300" data-toggle>
+        <h3 class="text-xl font-semibold text-purple-600">Quins són els preus dels teus serveis?</h3>
+        <span class="toggle-icon text-gray-600">+</span>
+      </div>
+      <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out" data-toggle-content>
+        <p class="text-gray-600 p-4">Els meus preus són flexibles i varien segons la complexitat i les característiques del projecte. Actualment ofereixo tres plans:</p>
+        <ul class="text-gray-600 p-4 list-disc list-inside">
+          <li><strong>Pla Bàsic:</strong> Ideal per petites empreses i projectes personals (500€ - 750€).</li>
+          <li><strong>Pla Pro:</strong> Per a negocis que necessiten més funcionalitats (750€ - 1500€).</li>
+          <li><strong>Pla Premium:</strong> Tot el que necessites per projectes avançats (1500€ - 2000€).</li>
+        </ul>
+        <p class="text-gray-600 p-4">Oferesc pressupostos personalitzats per assegurar que cada client obté el millor valor segons les seves necessitats.</p>
+      </div>
+    </div>
+
+    <div class="border-b border-gray-300">
+      <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition ease-in-out duration-300" data-toggle>
         <h3 class="text-xl font-semibold text-purple-600">Quina és la meva disponibilitat?</h3>
-        <span id="faq3-icon" class="text-gray-600">+</span>
+        <span class="toggle-icon text-gray-600">+</span>
       </div>
-      <div id="faq3" class="hidden p-4">
-        <p class="text-gray-600">Estic disponibles durant tota la setmana per atendre les teves consultes i gestionar projectes. Els horaris poden variar segons el tipus de servei que necessitis.</p>
+      <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out" data-toggle-content>
+        <p class="text-gray-600 p-4">Estic disponible per atendre consultes i gestionar projectes durant tota la setmana. Els horaris poden variar segons el tipus de servei que necessitis, i estic aquí per assegurar-te que obtens la millor atenció possible. No dubtis a contactar-me per a més informació sobre la meva disponibilitat específica per al teu projecte.</p>
       </div>
     </div>
 
     <div class="border-b border-gray-300">
-      <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition" onclick="toggleFAQ('faq4')">
-        <h3 class="text-xl font-semibold text-purple-600">Ofereixen suport després de la finalització del projecte?</h3>
-        <span id="faq4-icon" class="text-gray-600">+</span>
+      <div class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition ease-in-out duration-300" data-toggle>
+        <h3 class="text-xl font-semibold text-purple-600">Ofereixes suport després de la finalització del projecte?</h3>
+        <span class="toggle-icon text-gray-600">+</span>
       </div>
-      <div id="faq4" class="hidden p-4">
-        <p class="text-gray-600">Sí, ofereixo suport continu per assegurar que el teu lloc web funcioni correctament i per ajudar-te amb qualsevol canvi o actualització que necessitis.</p>
+      <div class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out" data-toggle-content>
+        <p class="text-gray-600 p-4">Sí, ofereixo un suport continu després de la finalització del projecte per assegurar que el teu lloc web funcioni correctament. Estic aquí per ajudar-te amb qualsevol canvi o actualització que necessitis, així com per resoldre qualsevol problema que pugui sorgir. La teva satisfacció és la meva prioritat.</p>
       </div>
     </div>
   </div>
@@ -366,6 +396,5 @@
 <script>
   AOS.init();
 </script>
-<script src="main.js"></script>
 </body>
 </html>
