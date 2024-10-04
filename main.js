@@ -129,23 +129,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const toggles = document.querySelectorAll("[data-toggle]");
-
-        toggles.forEach(toggle => {
-            toggle.addEventListener("click", function() {
-                const content = toggle.nextElementSibling;
-                const icon = toggle.querySelector(".toggle-icon");
-
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                    icon.textContent = "+";
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                    icon.textContent = "-";
-                }
-            });
-        });
-    });
-    
 });
