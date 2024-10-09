@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harvey Designs - Creació de Pàgines Web</title>
+  <link href="style.css" rel="stylesheet">
+  <!-- AOS Library for Scroll Animations -->
+  <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script type="module" src="/main.js"></script>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+<!-- Fletxa per tornar dalt -->
+<div id="scroll-to-top" class="fixed top-4 right-4 hidden bg-purple-600 text-white rounded-full p-2 cursor-pointer z-50">
+  <span class="text-xl">^</span>
+</div>
+
+<header class="bg-white shadow-md">
+  <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="#" class="flex items-center space-x-2">
+      <img src="https://harveydesigns.com/wp-content/uploads/2017/01/HD_logo.jpeg" alt="Logo HD" class="h-12 w-12 rounded-full">
+      <span class="text-3xl font-bold text-purple-600">Harvey Designs</span>
+    </a>
+    <!-- Botó del menú hamburguer -->
+    <button id="menu-toggle" class="md:hidden text-gray-600 focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+    <nav id="navbar" class="hidden md:flex">
+      <ul class="flex space-x-4 text-gray-600">
+        <li><a href="index.html#about" class="hover:text-purple-600">Sobre Mi</a></li>
+        <li><a href="index.html#services" class="hover:text-purple-600">Serveis</a></li>
+        <li><a href="index.html#pricing" class="hover:text-purple-600">Preus</a></li>
+        <li><a href="index.html#portfolio" class="hover:text-purple-600">Dissenys Previs</a></li>
+        <li><a href="index.html#faq" class="hover:text-purple-600">Preguntes Freqüents</a></li>
+        <li><a href="index.html#contact" class="hover:text-purple-600">Contacte Addicional</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Menú desplegable per mòbil -->
+  <div id="mobile-menu" class="hidden bg-white shadow-md absolute right-0 mt-2 w-48 rounded-lg z-20">
+    <ul class="flex flex-col space-y-2 p-4">
+      <li><a href="index.html#about" class="block hover:text-purple-600">Sobre Mi</a></li>
+      <li><a href="index.html#services" class="block hover:text-purple-600">Serveis</a></li>
+      <li><a href="index.html#pricing" class="block hover:text-purple-600">Preus</a></li>
+      <li><a href="index.html#portfolio" class="block hover:text-purple-600">Dissenys Previs</a></li>
+      <li><a href="index.html#faq" class="block hover:text-purple-600">Preguntes Freqüents</a></li>
+      <li><a href="index.html#contact" class="block hover:text-purple-600">Contacte Addicional</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="relative bg-purple-600 text-white py-10 md:py-20 overflow-hidden px-4 md:px-0">
+  <!-- Video Background -->
+  <video autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover opacity-40 z-0">
+    <source src="/content/background.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <!-- Gradient overlay to enhance readability -->
+  <div class="absolute inset-0 bg-gradient-to-t from-purple-800 via-purple-600 to-transparent opacity-70 z-0"></div>
+  <!-- Content Section -->
+  <div class="relative z-10 text-center">
+    <h1 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">Pla Bàsic</h1>
+    <p class="text-base md:text-lg mb-6 drop-shadow-md">Ideal per a petites empreses, autònoms i projectes personals que busquen una presència online professional, moderna i funcional sense comprometre el pressupost.</p>
+  </div>
+</section>
+
+<!-- Main content -->
+<main class="container mx-auto p-6">
+  <section id="pricing" class="bg-white py-12" data-aos="fade-up">
+    <div class="text-center mb-10">
+      <h2 class="text-5xl font-bold text-purple-700 mb-4">500€ - 700€</h2>
+    </div>
+
+    <!-- Grid de cartes de característiques -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="bg-purple-200 p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-file-alt fa-4x text-purple-700 mr-4"></i>
+          <h3 class="text-2xl font-semibold text-purple-700">Pàgina única atractiva</h3>
+        </div>
+        <p class="text-gray-700">
+          Una pàgina elegant i minimalista dissenyada per capturar l'essència de la teva marca.
+        </p>
+      </div>
+
+      <div class="bg-purple-200 p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-mobile-alt fa-4x text-purple-700 mr-4"></i>
+          <h3 class="text-2xl font-semibold text-purple-700">Disseny totalment responsiu</h3>
+        </div>
+        <p class="text-gray-700">
+          La teva web ofereix una experiència òptima en tots els dispositius.
+        </p>
+      </div>
+
+      <div class="bg-purple-200 p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-tachometer-alt fa-4x text-purple-700 mr-4"></i>
+          <h3 class="text-2xl font-semibold text-purple-700">Optimització per a velocitat</h3>
+        </div>
+        <p class="text-gray-700">
+          Temps de càrrega ràpids per una millor experiència i millora del SEO.
+        </p>
+      </div>
+
+      <div class="bg-purple-200 p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105">
+        <div class="flex items-center mb-4">
+          <i class="fas fa-tools fa-4x text-purple-700 mr-4"></i>
+          <h3 class="text-2xl font-semibold text-purple-700">Funcionalitats essencials</h3>
+        </div>
+        <p class="text-gray-700">
+          Inclou formulari de contacte, enllaços a xarxes socials i més.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="border-gray-300 my-10">
+
+  <section id="embedded-content" class="bg-gray-100 py-12" data-aos="fade-up">
+    <div class="text-center mb-10">
+      <h2 class="text-4xl font-bold text-purple-700 mb-4">Exemple pàgina Pla Bàsic</h2>
+      <p class="text-lg text-gray-600">Aquest es un exemple d'una pàgina feta amb el Pla Bàsic</p>
+    </div>
+
+    <div class="flex justify-center">
+      <iframe src="https://testmy.net/"
+              class="w-full md:w-3/4 lg:w-1/2 h-96 border-2 border-purple-300 rounded-lg shadow-lg"
+              title="Contingut"
+              loading="lazy">
+        El teu navegador no suporta iframes.
+      </iframe>
+    </div>
+  </section>
+</main>
+
+
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+  <section id="contact" data-aos="fade-up">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between">
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-xl font-bold mb-4">IES Ebre</h3>
+          <p class="text-gray-400 mb-4">Av. de Cristòfol Colom, 34, 42, 43500 Tortosa, Tarragona</p>
+          <p class="text-gray-400">Correu: <a href="mailto:hglover@gmail.com" class="underline">hglover@gmail.com</a></p>
+          <p class="text-gray-400">Telèfon: <a href="tel:+34625452365" class="underline">625 452 365</a></p>
+        </div>
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-xl font-bold mb-4">Enllaços Ràpids</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html#about" class="text-gray-400 hover:underline">Sobre Mi</a></li>
+            <li><a href="index.html#services" class="text-gray-400 hover:underline">Serveis</a></li>
+            <li><a href="index.html#pricing" class="text-gray-400 hover:underline">Preus</a></li>
+            <li><a href="index.html#portfolio" class="text-gray-400 hover:underline">Dissenys Previs</a></li>
+            <li><a href="index.html#faq" class="text-gray-400 hover:underline">Preguntes Freqüents</a></li>
+            <li><a href="index.html#contact" class="text-gray-400 hover:underline">Contacte Addicional</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+          <p class="text-gray-400 mb-4">Subscriu-te al nostre butlletí per rebre les últimes novetats.</p>
+          <form action="#" class="flex flex-col md:flex-row">
+            <input type="email" placeholder="Correu electrònic" class="w-full md:w-auto px-4 py-2 rounded-l-lg text-gray-800 focus:outline-none mb-2 md:mb-0">
+            <button class="bg-purple-600 px-6 py-2 rounded-lg text-white font-semibold hover:bg-purple-500">Subscriu-te</button>
+          </form>
+        </div>
+      </div>
+      <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-500">
+        &copy; 2024 IES Ebre. Tots els drets reservats.
+      </div>
+    </div>
+  </section>
+</footer>
+
+<!-- AOS Animation Script -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>
