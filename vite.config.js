@@ -1,12 +1,8 @@
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { defineConfig } from 'vite';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
+import { resolve } from 'path'
+import { defineConfig } from 'vite'
 export default defineConfig({
-    // config options
-    base: '/landing-page-harvey/',
+// config options
+base: '/landing-page-harvey/',
     build: {
         rollupOptions: {
             input: {
@@ -17,4 +13,4 @@ export default defineConfig({
             },
         },
     },
-});
+})
